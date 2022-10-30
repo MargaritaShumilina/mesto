@@ -1,0 +1,25 @@
+.edit-profile {
+    padding: 8px;
+    background-color: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 2px;
+    background-image: url('../edit-profile/img/edit-profile.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 10px;
+    background-size: 8px;
+}
+
+.edit-profile:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+
+@media screen and (min-width: 1024px) {
+    .edit-profile {
+        margin-left: 18px;
+        padding: 11px;
+        background-size: 10px;
+    }
+}

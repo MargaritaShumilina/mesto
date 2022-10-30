@@ -1,0 +1,10 @@
+.like {
+    min-width: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.like:hover {
+    cursor: pointer;
+    opacity: .5;
+}

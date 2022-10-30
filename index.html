@@ -1,15 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../pages/index.css">
+    <title>Mesto Russia</title>
+    <meta name="description" content="Проект по добавлению картинок красивых мест России">
+    <meta name="keyword" content="Mesto Russia JS">
+    <meta name="author" content="Shumilina Margarita">
 </head>
 
-<body>
-
+<body class="root">
+    <header class="header">
+        <img class="logo" src="./blocks/logo/img/logo.svg" alt="Логотип">
+    </header>
+    <hr class="line-bottom">
+    <main class="content">
+        <section class="profile">
+            <img class="profile__avatar" src="./blocks/profile/img/profile-image.jpg" alt="Аватар">
+            <div class="profile__info">
+                <div class="profile__heading">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="edit-profile"></button>
+                </div>
+                <p class="profile__status">Исследователь океана</p>
+            </div>
+            <button class="add-photo"></button>
+        </section>
+        <section class="photo-places">
+            <div class="showplace">
+                <img class="showplace__image" src="./blocks/showplace/img/showplace-karachaevsk.jpg"
+                    alt="Карачаевский монастырь">
+                <div class="showplace__signature">
+                    <h2 class="showplace__name">Карачаевский монастырь</h2>
+                    <div class="like like_disabled"></div>
+                </div>
+            </div>
+            <div class="showplace">
+                <img class="showplace__image" src="./blocks/showplace/img/showplace-gora.jpg" alt="Гора Эльбрус">
+                <div class="showplace__signature">
+                    <h2 class="showplace__name">Гора Эльбрус</h2>
+                    <div class="like like_disabled"></div>
+                </div>
+            </div>
+            <div class="showplace">
+                <img class="showplace__image" src="./blocks/showplace/img/showplace-dombay.jpg" alt="Домбай">
+                <div class="showplace__signature">
+                    <h2 class="showplace__name">Домбай</h2>
+                    <div class="like like_disabled"></div>
+                </div>
+            </div>
+            <div class="showplace">
+                <img class="showplace__image" src="./blocks/showplace/img/showplace-gora.jpg" alt="Гора Эльбрус">
+                <div class="showplace__signature">
+                    <h2 class="showplace__name">Гора Эльбрус</h2>
+                    <div class="like like_disabled"></div>
+                </div>
+            </div>
+            <div class="showplace">
+                <img class="showplace__image" src="./blocks/showplace/img/showplace-dombay.jpg" alt="Домбай">
+                <div class="showplace__signature">
+                    <h2 class="showplace__name">Домбай</h2>
+                    <div class="like like_disabled"></div>
+                </div>
+            </div>
+            <div class="showplace">
+                <img class="showplace__image" src="./blocks/showplace/img/showplace-karachaevsk.jpg" alt="Карачаевск">
+                <div class="showplace__signature">
+                    <h2 class="showplace__name">Карачаевск</h2>
+                    <div class="like like_disabled"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__close"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form name="form-profile" class="popup__form">
+                <fieldset class="popup__fieldset">
+                    <input class="popup__input popup__input_type_name" type="text" name="name"
+                        placeholder="Жак-Ив Кусто" value="Жак-Ив Кусто">
+                    <input class="popup__input popup__input_type_status" type="text" name="status"
+                        placeholder="Исследователь океана" value="Исследователь океана">
+                </fieldset>
+                <button class="save-change" type="submit" value="Сохранить">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <script src="./scripts/index.js"></script>
 </body>
 
-</html>l
+</html>

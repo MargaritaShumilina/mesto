@@ -1,0 +1,20 @@
+.save-change {
+    padding: 14px;
+    background-color: #000;
+    color: #fff;
+    margin-top: 15px;
+    border: none;
+    width: 100%;
+}
+
+.save-change:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .save-change  {
+        padding: 16px;
+        margin-top: 14px;
+    }
+}

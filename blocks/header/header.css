@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    max-width: 100%;
+    margin-top: 28px;
+    justify-content: flex-start;
+}
+
+@media screen and (min-width: 1024px) {
+    .header  {
+        max-width: 880px;
+        margin: 45px auto 0 auto;
+    }
+}
