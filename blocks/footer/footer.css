@@ -10,6 +10,6 @@
 
 @media screen and (min-width: 1024px) {
     .footer  {
-        margin: 0 calc((100% - 880px)/2) 6px calc((100% - 880px)/2);
+        margin: 0 calc((100% - 880px)/2) 60px calc((100% - 880px)/2);
     }
 }

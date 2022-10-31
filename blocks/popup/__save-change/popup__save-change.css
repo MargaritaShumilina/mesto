@@ -1,20 +1,26 @@
-.save-change {
+.popup__save-change {
     padding: 14px;
     background-color: #000;
     color: #fff;
     margin-top: 15px;
     border: none;
     width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 122%;
 }
 
-.save-change:hover {
+.popup__save-change:hover {
     opacity: .8;
     cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
-    .save-change  {
+    .popup__save-change {
         padding: 16px;
         margin-top: 14px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 122%;
     }
 }
