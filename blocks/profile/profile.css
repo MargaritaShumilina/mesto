@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     margin: 42px calc((100% - 282px)/2) 0 calc((100% - 282px)/2);
+    width: 100%;
+    max-width: 282px;
 }
 
 
