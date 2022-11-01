@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 1024px) {
     .profile__heading  {
-        margin-bottom: 7px;
+        margin-bottom: 6px;
         margin-right: 0;
         max-width: 336px;
     }
