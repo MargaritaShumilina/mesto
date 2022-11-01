@@ -17,8 +17,6 @@
 @import url('../blocks/profile/__edit/profile__edit.css');
 @import url('../blocks/profile/__add-photo/profile__add-photo.css');
 
-@import url('../blocks/add-photo/add-photo.css');
-
 @import url('../blocks/photo-places/photo-places.css');
 
 @import url('../blocks/showplace/showplace.css');
@@ -26,6 +24,7 @@
 @import url('../blocks/showplace/__name/showplace__name.css');
 @import url('../blocks/showplace/__signature/showplace__signature.css');
 @import url('../blocks/showplace/__like/showplace__like.css');
+@import url('../blocks/showplace/__like/_active/showplace__like_active.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');

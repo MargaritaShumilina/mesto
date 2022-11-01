@@ -12,7 +12,6 @@
 @media screen and (min-width: 1024px) {
     .profile__status  {
         font-size: 18px;
-        line-height: 122%;
         text-align: start;
     }
 }

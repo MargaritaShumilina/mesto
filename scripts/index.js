@@ -15,13 +15,9 @@ function popupAddOpened() {
     jobInput.value = profileStatus.textContent;
 };
 
-editProfile.addEventListener('click', popupAddOpened)
-
 function popupRemoveOpened() {
     popupElem.classList.remove('popup_opened');
 };
-
-popupCloseElem.addEventListener('click', popupRemoveOpened);
 
 popupElem.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
@@ -33,8 +29,11 @@ function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
+    popupRemoveOpened();
 };
 
-formElement.addEventListener('submit', formSubmitHandler);
+editProfile.addEventListener('click', popupAddOpened);
 
-formElement.addEventListener('submit', popupRemoveOpened);
+popupCloseElem.addEventListener('click', popupRemoveOpened);
+
+formElement.addEventListener('submit', formSubmitHandler);
