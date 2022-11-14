@@ -118,11 +118,14 @@ const handlerAddLike = (evt) => {
 const handlerImage = ('click', (evt) => {
     popupFullImage.classList.add('popup_opened');
 
-    const etargetsrc = evt.target.closest('.showplace__image').src;
-    showplaceFullUrl.src = etargetsrc;
+    const eTargetSrc = evt.target.closest('.showplace__image').src;
+    showplaceFullUrl.src = eTargetSrc;
 
-    const etargettitle = evt.target.closest('.showplace__image').alt;
-    showplaceFullTitle.textContent = etargettitle;
+    const eTargetTitle = evt.target.closest('.showplace__image').alt;
+    showplaceFullTitle.textContent = eTargetTitle;
+
+    const eTargetAlt = evt.target.closest('.showplace__image').alt;
+    showplaceFullUrl.alt = eTargetAlt;
 });
 
 const generateShowplace = (dataPhotoCard) => {
