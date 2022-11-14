@@ -4,7 +4,7 @@
 
 @media screen and (min-width: 768px) {
     .footer  {
-        margin: 0 calc((100% - 584px)/2) 48px calc((100% - 584px)/2);
+        margin: 0 calc((100% - 584px)/2) 36px calc((100% - 584px)/2);
     }
 }
 

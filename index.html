@@ -29,56 +29,14 @@
             <button class="profile__add-photo" type="button"></button>
         </section>
         <section class="photo-places">
-            <article class="showplace">
-                <img class="showplace__image" src="./blocks/showplace/img/showplace-karachaevsk.jpg"
-                    alt="Карачаевский монастырь">
-                <div class="showplace__signature">
-                    <h2 class="showplace__name">Карачаевский монастырь</h2>
-                    <button class="showplace__like" type="button"></button>
-                </div>
-            </article>
-            <article class="showplace">
-                <img class="showplace__image" src="./blocks/showplace/img/showplace-gora.jpg" alt="Гора Эльбрус">
-                <div class="showplace__signature">
-                    <h2 class="showplace__name">Гора Эльбрус</h2>
-                    <button class="showplace__like" type="button"></button>
-                </div>
-            </article>
-            <article class="showplace">
-                <img class="showplace__image" src="./blocks/showplace/img/showplace-dombay.jpg" alt="Домбай">
-                <div class="showplace__signature">
-                    <h2 class="showplace__name">Домбай</h2>
-                    <button class="showplace__like" type="button"></button>
-                </div>
-            </article>
-            <article class="showplace">
-                <img class="showplace__image" src="./blocks/showplace/img/showplace-gora.jpg" alt="Гора Эльбрус">
-                <div class="showplace__signature">
-                    <h2 class="showplace__name">Гора Эльбрус</h2>
-                    <button class="showplace__like" type="button"></button>
-                </div>
-            </article>
-            <article class="showplace">
-                <img class="showplace__image" src="./blocks/showplace/img/showplace-dombay.jpg" alt="Домбай">
-                <div class="showplace__signature">
-                    <h2 class="showplace__name">Домбай</h2>
-                    <button class="showplace__like" type="button"></button>
-                </div>
-            </article>
-            <article class="showplace">
-                <img class="showplace__image" src="./blocks/showplace/img/showplace-karachaevsk.jpg" alt="Карачаевск">
-                <div class="showplace__signature">
-                    <h2 class="showplace__name">Карачаевск</h2>
-                    <button class="showplace__like" type="button"></button>
-                </div>
-            </article>
+
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
-        <div class="popup__container">
+    <div class="popup popup-profile">
+        <div class="popup__container popup-profile__container">
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="form-profile" class="popup__form">
@@ -92,6 +50,40 @@
             </form>
         </div>
     </div>
+    <div class="popup popup-showplace">
+        <div class="popup__container popup-showplace__container">
+            <button class="popup__close popup-showplace__close" type="button"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form name="form-profile" class="popup__form">
+                <fieldset class="popup__fieldset">
+                    <input class="popup__input popup__input_type_title" type="text" name="title" value=""
+                        placeholder="Название">
+                    <input class="popup__input popup__input_type_url" type="text" name="url" value=""
+                        placeholder="Ссылка на картинку">
+                </fieldset>
+                <button class="popup__save-change" type="submit" value="Создать">Создать</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup-full-img">
+        <div class="popup-full-img__container">
+            <button class="popup__close popup-full-img__close" type="button"></button>
+            <figure class="popup-full-img__full-showplace">
+                <img class="popup-full-img__photo">
+                <figcaption class="popup-full-img__title"></figcaption>
+            </figure>
+        </div>
+    </div>
+    <template id="showplace-card">
+        <article class="showplace">
+            <button class="showplace__remove" type="button"></button>
+            <img class="showplace__image">
+            <div class="showplace__signature">
+                <h2 class="showplace__name"></h2>
+                <button class="showplace__like" type="button"></button>
+            </div>
+        </article>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 

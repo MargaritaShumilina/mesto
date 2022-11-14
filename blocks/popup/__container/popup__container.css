@@ -4,20 +4,17 @@
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    max-width: 282px;
-    max-height: 322px;
+    max-width: 240px;
     width: 100%;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     padding: 25px 22px;
-    box-sizing: border-box;
     position: relative;
 }
 
 @media screen and (min-width: 768px) {
     .popup__container  {
-        max-width: 430px;
-        max-height: 330px;
-        padding: 35px 36px;
+        max-width: 361px;
+        padding: 35px 35px 37px 35px;
     }
 }

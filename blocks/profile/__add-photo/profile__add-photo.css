@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
-    margin: 0 calc((100% - 282px)/2) 36px calc((100% - 282px)/2);
+    margin: 0 calc((100% - 282px)/2) 34px calc((100% - 282px)/2);
 }
 
 
@@ -20,8 +20,9 @@
 
 @media screen and (min-width: 1024px) {
     .profile__add-photo  {
-        padding: 23px 22px;
-        margin: 0 0;
+        padding-right: 22px;
+        padding-left: 22px;
+        margin: 0 0 4px 0;
         max-width: 150px;
         justify-self: flex-end;
         background-size: 22px;

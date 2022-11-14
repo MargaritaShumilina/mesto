@@ -7,10 +7,10 @@
     width: 20px;
     height: 20px;
     border: none;
-    top: -35px;
+    top: -36px;
     right: 0;
-    background-color: #000;
     border-radius: 2px;
+    background-color: initial;
 }
 
 .popup__close:hover {
@@ -21,8 +21,8 @@
 @media screen and (min-width: 768px) {
     .popup__close  {
         background-size: 32px;
-        top: -35px;
-        right: -35px;
+        top: -39px;
+        right: -39px;
         width: 32px;
         height: 32px;
     }

@@ -7,4 +7,9 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 122%;
+    padding-bottom: 8px;
+}
+
+.popup__input:last-child {
+    margin-bottom: 0;
 }

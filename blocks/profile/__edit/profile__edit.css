@@ -10,7 +10,7 @@
     margin-left: 10px;
     background-size: 8px;
     position: absolute;
-    top: 5px;
+    top: 7px;
     right: -28px;
 }
 
@@ -21,10 +21,10 @@
 
 @media screen and (min-width: 1024px) {
     .profile__edit {
-        margin-left: 18px;
+        margin-left: 19px;
+        margin-top: 5px;
         padding: 11px;
         background-size: 10px;
-        top: 16px;
-        right: 0px;
+        position: initial;
     }
 }
