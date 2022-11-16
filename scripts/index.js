@@ -1,74 +1,104 @@
-//Popup для редактирования профиля
-const editProfile = document.querySelector('.profile__edit');
-const popupElem = document.querySelector('.popup-profile');
-const popupCloseElem = document.querySelector('.popup__close');
+//универсальные функции для закрытия и открытия попап
 
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_status');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
+const popupUniversal = document.querySelector('.popup');
+const popupUniversalClose = document.querySelector('.popup__close');
+const popupUniversalSaveChange = document.querySelector('.popup__save-change');
+const openBtnEdit = document.querySelector('.profile__edit');
+const openBtnAdd = document.querySelector('.profile__add-photo');
+const popupProfile = document.querySelector('.popup-profile');
+const popupShowplace = document.querySelector('.popup-showplace');
+const closeAllBtnEdit = document.querySelectorAll('.popup__close');
+const inputValue = document.querySelectorAll('.popup__input');
+const editFullProfile = document.querySelector('.showplace__image');
+const popupFullImage = document.querySelector('.popup-full-img');
+const popupCloseFullImage = document.querySelector('.popup-full-img__close');
 
-function popupAddOpened() {
-    popupElem.classList.add('popup_opened');
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileStatus.textContent;
+function openPopupEvt(evt) {
+    if (evt.target = openBtnEdit) {
+        openPopup(popupShowplace);
+        console.log(evt.target);
+        console.log(openBtnAdd);
+    } else {
+        openPopup(popupProfile);
+        console.log(evt.target);
+        console.log(openBtnEdit);
+    }
 };
 
-function popupRemoveOpened() {
-    popupElem.classList.remove('popup_opened');
+function openPopup(oPop) {
+    oPop.classList.add('popup_opened');
+    return addValue();
+}
+
+function closePopup(cPop) {
+    cPop.classList.remove('popup_opened');
+};
+
+
+function addValue() {
+    if (popupUniversal.classList.contains('popup_opened') === true && popupUniversal.classList.contains('popup-profile') === true) {
+        nameInput.value = profileName.textContent;
+        jobInput.value = profileStatus.textContent;
+    } else {
+        inputValue.value = '';
+    }
 };
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
-    popupRemoveOpened();
+    closePopup(popupProfile);
 };
 
-popupElem.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        popupRemoveOpened();
-    }
-});
-
-editProfile.addEventListener('click', popupAddOpened);
-
-popupCloseElem.addEventListener('click', popupRemoveOpened);
-
-popupElem.addEventListener('submit', formSubmitHandler);
-
-//Popup для добавления картинки
-const addPhoto = document.querySelector('.profile__add-photo');
-const popupForAddPhoto = document.querySelector('.popup-showplace');
-const popupAddPhotoClose = document.querySelector('.popup-showplace__close');
-
-function popupAddPhotoOpened() {
-    popupForAddPhoto.classList.add('popup_opened');
-};
-
-function popupAddRemoveOpened() {
-    popupForAddPhoto.classList.remove('popup_opened');
-};
-
-function formAddSubmitHandler(evt) {
+function photoSubmitHandler(evt) {
     evt.preventDefault();
-    popupAddRemoveOpened();
+    closePopup(popupShowplace);
     renderCard({ name: photoTitle.value, link: photoUrl.value });
     photoTitle.value = '';
     photoUrl.value = '';
 };
 
-popupForAddPhoto.addEventListener('click', (event) => {
+closeAllBtnEdit.forEach((button) => {
+    const popup = button.closest('.popup');
+    button.addEventListener('click', () => closePopup(popup));
+});
+
+
+openBtnEdit.addEventListener('click', function () {
+    openPopup(popupProfile);
+});
+
+
+openBtnAdd.addEventListener('click', function () {
+    openPopup(popupShowplace);
+});
+
+popupProfile.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
-        popupAddRemoveOpened();
+        closePopup(popupProfile);
     }
 });
 
-addPhoto.addEventListener('click', popupAddPhotoOpened);
+popupShowplace.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        closePopup(popupShowplace);
+    }
+});
 
-popupAddPhotoClose.addEventListener('click', popupAddRemoveOpened);
+popupProfile.addEventListener('submit', formSubmitHandler);
 
-popupForAddPhoto.addEventListener('submit', formAddSubmitHandler);
+popupShowplace.addEventListener('submit', photoSubmitHandler);
+
+popupFullImage.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        closePopup(popupFullImage);
+    }
+});
 
 //Рендер карточек достопримечательностей, лайки, удаление
 const initialCards = [
@@ -101,9 +131,7 @@ const initialCards = [
 const photoPlaceList = document.querySelector('.photo-places');
 const photoTitle = document.querySelector('.popup__input_type_title');
 const photoUrl = document.querySelector('.popup__input_type_url');
-
 const cardTemplate = document.querySelector('#showplace-card').content.querySelector('.showplace');
-
 const showplaceFullUrl = document.querySelector('.popup-full-img__photo');
 const showplaceFullTitle = document.querySelector('.popup-full-img__title');
 
@@ -116,7 +144,7 @@ const handlerAddLike = (evt) => {
 };
 
 const handlerImage = ('click', (evt) => {
-    popupFullImage.classList.add('popup_opened');
+    openPopup(popupFullImage);
 
     const eTargetSrc = evt.target.closest('.showplace__image').src;
     showplaceFullUrl.src = eTargetSrc;
@@ -155,20 +183,3 @@ const renderCard = (dataPhotoCard) => {
 initialCards.forEach((dataPhotoCard) => {
     renderCard(dataPhotoCard);
 });
-
-//Popup для вывода большой картинки достопримечательности
-const editFullProfile = document.querySelector('.showplace__image');
-const popupFullImage = document.querySelector('.popup-full-img');
-const popupCloseFullImage = document.querySelector('.popup-full-img__close');
-
-function popupFullRemoveOpened() {
-    popupFullImage.classList.remove('popup_opened');
-};
-
-popupFullImage.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        popupFullRemoveOpened();
-    }
-});
-
-popupCloseFullImage.addEventListener('click', popupFullRemoveOpened);
