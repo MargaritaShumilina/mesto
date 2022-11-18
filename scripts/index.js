@@ -4,51 +4,22 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_status');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
-const popupUniversal = document.querySelector('.popup');
-const popupUniversalClose = document.querySelector('.popup__close');
-const popupUniversalSaveChange = document.querySelector('.popup__save-change');
 const openBtnEdit = document.querySelector('.profile__edit');
 const openBtnAdd = document.querySelector('.profile__add-photo');
 const popupProfile = document.querySelector('.popup-profile');
 const popupShowplace = document.querySelector('.popup-showplace');
-const closeAllBtnEdit = document.querySelectorAll('.popup__close');
-const inputValue = document.querySelectorAll('.popup__input');
-const editFullProfile = document.querySelector('.showplace__image');
+const buttonsClosePopup = document.querySelectorAll('.popup__close');
 const popupFullImage = document.querySelector('.popup-full-img');
-const popupCloseFullImage = document.querySelector('.popup-full-img__close');
 
-function openPopupEvt(evt) {
-    if (evt.target = openBtnEdit) {
-        openPopup(popupShowplace);
-        console.log(evt.target);
-        console.log(openBtnAdd);
-    } else {
-        openPopup(popupProfile);
-        console.log(evt.target);
-        console.log(openBtnEdit);
-    }
-};
-
-function openPopup(oPop) {
-    oPop.classList.add('popup_opened');
-    return addValue();
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
 }
 
-function closePopup(cPop) {
-    cPop.classList.remove('popup_opened');
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
 };
 
-
-function addValue() {
-    if (popupUniversal.classList.contains('popup_opened') === true && popupUniversal.classList.contains('popup-profile') === true) {
-        nameInput.value = profileName.textContent;
-        jobInput.value = profileStatus.textContent;
-    } else {
-        inputValue.value = '';
-    }
-};
-
-function formSubmitHandler(evt) {
+function submitEditProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileStatus.textContent = jobInput.value;
@@ -59,11 +30,16 @@ function photoSubmitHandler(evt) {
     evt.preventDefault();
     closePopup(popupShowplace);
     renderCard({ name: photoTitle.value, link: photoUrl.value });
-    photoTitle.value = '';
-    photoUrl.value = '';
+    evt.target.reset();
 };
 
-closeAllBtnEdit.forEach((button) => {
+function closeByOverlayClick(evt) {
+    if (evt.target === evt.currentTarget) {
+        closePopup(evt);
+    }
+};
+
+buttonsClosePopup.forEach((button) => {
     const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
 });
@@ -71,6 +47,8 @@ closeAllBtnEdit.forEach((button) => {
 
 openBtnEdit.addEventListener('click', function () {
     openPopup(popupProfile);
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileStatus.textContent;
 });
 
 
@@ -78,55 +56,26 @@ openBtnAdd.addEventListener('click', function () {
     openPopup(popupShowplace);
 });
 
-popupProfile.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        closePopup(popupProfile);
-    }
+popupProfile.addEventListener('click', (evt) => {
+    closeByOverlayClick(evt.target);
 });
 
-popupShowplace.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        closePopup(popupShowplace);
-    }
+popupShowplace.addEventListener('click', (evt) => {
+    closeByOverlayClick(evt.target);
 });
 
-popupProfile.addEventListener('submit', formSubmitHandler);
+popupFullImage.addEventListener('click', (evt) => {
+    closeByOverlayClick(evt.target);
+});
+
+popupProfile.addEventListener('submit', submitEditProfileForm);
 
 popupShowplace.addEventListener('submit', photoSubmitHandler);
 
-popupFullImage.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        closePopup(popupFullImage);
-    }
-});
 
-//Рендер карточек достопримечательностей, лайки, удаление
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+//Генерация карточек, лайки, удаление
+//я понимаю, что это не совсем верная иерархия, но если я сейчас все смешаю, я боюсь,
+//что запутаюсь в следующей практической
 
 const photoPlaceList = document.querySelector('.photo-places');
 const photoTitle = document.querySelector('.popup__input_type_title');
