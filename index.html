@@ -39,14 +39,17 @@
         <div class="popup__container popup-profile__container">
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="form-profile" class="popup__form">
+            <form name="form-profile" class="popup__form" novalidate>
                 <fieldset class="popup__fieldset">
                     <input class="popup__input popup__input_type_name" type="text" name="name" value=""
-                        placeholder="Имя">
+                        placeholder="Имя" required id="popup__name-profile" maxlength="40" minlength="2">
+                    <span class="popup__name-profile_error popup__input_error"></span>
                     <input class="popup__input popup__input_type_status" type="text" name="status" value=""
-                        placeholder="Описание профиля">
+                        placeholder="Описание профиля" required id="popup__status-profile" maxlength="200"
+                        minlength="2">
+                    <span class="popup__status-profile_error popup__input_error"></span>
                 </fieldset>
-                <button class="popup__save-change" type="submit" value="Сохранить">Сохранить</button>
+                <button class="popup__button" type="submit" value="Сохранить">Сохранить</button>
             </form>
         </div>
     </div>
@@ -54,14 +57,16 @@
         <div class="popup__container popup-showplace__container">
             <button class="popup__close popup-showplace__close" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form name="form-profile" class="popup__form">
+            <form name="form-add-photo" class="popup__form" novalidate>
                 <fieldset class="popup__fieldset">
                     <input class="popup__input popup__input_type_title" type="text" name="title" value=""
-                        placeholder="Название">
-                    <input class="popup__input popup__input_type_url" type="text" name="url" value=""
-                        placeholder="Ссылка на картинку">
+                        placeholder="Название" required id="popup__title-photo" maxlength="30" minlength="2">
+                    <span class="popup__title-photo_error popup__input_error"></span>
+                    <input class="popup__input popup__input_type_url" type="url" name="url" value=""
+                        placeholder="Ссылка на картинку" required id="popup__url-photo">
+                    <span class="popup__url-photo_error popup__input_error"></span>
                 </fieldset>
-                <button class="popup__save-change" type="submit" value="Создать">Создать</button>
+                <button class="popup__button" type="submit" value="Создать">Создать</button>
             </form>
         </div>
     </div>
@@ -84,6 +89,7 @@
             </div>
         </article>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/constants.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
