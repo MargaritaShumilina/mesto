@@ -1,6 +1,6 @@
 const popupElement = document.querySelector('.popup__form');
 const popupInput = popupElement.querySelector('.popup__input');
-const popupError = popupElement.querySelector(`.${popupInput.id}_error`);
+const popupError = popupElement.querySelector(`.${popupInput.id}-error`);
 
 const setEventListeners = (popupElement) => {
     const inputList = Array.from(popupElement.querySelectorAll('.popup__input'));
@@ -21,14 +21,14 @@ const enableValidation = () => {
 };
 
 const showInputError = (popupElement, popupInput, errorMessage) => {
-    const errorElement = popupElement.querySelector(`.${popupInput.id}_error`);
+    const errorElement = popupElement.querySelector(`.${popupInput.id}-error`);
     popupInput.classList.add('popup__input_type_error');
     errorElement.textContent = errorMessage;
     errorElement.classList.add('popup__input_type_error_active');
 };
 
 const hideInputError = (popupElement, popupInput) => {
-    const errorElement = popupElement.querySelector(`.${popupInput.id}_error`);
+    const errorElement = popupElement.querySelector(`.${popupInput.id}-error`);
     popupInput.classList.remove('popup__input_type_error');
     errorElement.classList.remove('popup__input_type_error_active');
     errorElement.textContent = '';
