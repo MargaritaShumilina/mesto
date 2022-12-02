@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="./scripts/validate.js" defer></script>
+    <script src="./scripts/constants.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
     <title>Mesto Russia</title>
     <meta name="description" content="Проект по добавлению картинок красивых мест России">
     <meta name="keyword" content="Mesto Russia JS">
@@ -39,7 +42,7 @@
         <div class="popup__container popup-profile__container">
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="form-profile" class="popup__form" novalidate>
+            <form name="formProfile" class="popup__form" novalidate>
                 <fieldset class="popup__fieldset">
                     <input class="popup__input popup__input_type_name" type="text" name="name" value=""
                         placeholder="Имя" required id="popup-name-profile" maxlength="40" minlength="2">
@@ -56,16 +59,17 @@
         <div class="popup__container popup-showplace__container">
             <button class="popup__close popup-showplace__close" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form name="form-add-photo" class="popup__form" novalidate>
+            <form name="formPhoto" class="popup__form" novalidate>
                 <fieldset class="popup__fieldset">
-                    <input class="popup__input popup__input_type_title" type="text" name="title" value=""
-                        placeholder="Название" required id="popup-title-photo" maxlength="30" minlength="2">
+                    <input class="popup__input popup__input_type_title" type="text" name="title" placeholder="Название"
+                        required id="popup-title-photo" maxlength="30" minlength="2">
                     <span class="popup-title-photo-error popup__input-error"></span>
-                    <input class="popup__input popup__input_type_url" type="url" name="url" value=""
+                    <input class="popup__input popup__input_type_url" type="url" name="url"
                         placeholder="Ссылка на картинку" required id="popup-url-photo">
                     <span class="popup-url-photo-error popup__input-error"></span>
                 </fieldset>
-                <button class="popup__button" type="submit" value="Создать">Создать</button>
+                <button name="buttonPhoto" class="popup__button popup__button_disabled" type="submit" value="Создать"
+                    disabled>Создать</button>
             </form>
         </div>
     </div>
@@ -88,9 +92,6 @@
             </div>
         </article>
     </template>
-    <script src="./scripts/validate.js"></script>
-    <script src="./scripts/constants.js"></script>
-    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

@@ -4,4 +4,9 @@
     width: 100%;
     object-position: center;
     object-fit: cover;
+    background-color: #000;
+}
+
+.showplace__image:hover {
+    cursor: pointer;
 }
