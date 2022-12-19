@@ -9,63 +9,63 @@ const popupShowplace = document.querySelector('.popup-showplace');
 const buttonsClosePopup = document.querySelectorAll('.popup__close');
 const popupFullImage = document.querySelector('.popup-full-img');
 const overlay = document.querySelector('.content');
-const formProfile = document.forms.formProfile;
-const formAddPhoto = document.forms.formPhoto;
+// const formProfile = document.forms.formProfile;
+// const formAddPhoto = document.forms.formPhoto;
 const buttonPhoto = formAddPhoto.elements.buttonPhoto;
 
-const photoPlaceList = document.querySelector('.photo-places');
+// const photoPlaceList = document.querySelector('.photo-places');
 const photoTitle = document.querySelector('.popup__input_type_title');
 const photoUrl = document.querySelector('.popup__input_type_url');
-const cardTemplate = document.querySelector('#showplace-card').content.querySelector('.showplace');
-const showplaceFullUrl = document.querySelector('.popup-full-img__photo');
-const showplaceFullTitle = document.querySelector('.popup-full-img__title');
+// const cardTemplate = document.querySelector('#showplace-card').content.querySelector('.showplace');
+// const showplaceFullUrl = document.querySelector('.popup-full-img__photo');
+// const showplaceFullTitle = document.querySelector('.popup-full-img__title');
 const openPopupElem = document.querySelector('.popup_opened');
 const popupBtnElem = document.querySelector('.popup__button');
 
-const handlerDeleteCard = (evt) => {
-    evt.target.closest('.showplace').remove();
-};
+// const handlerDeleteCard = (evt) => {
+//     evt.target.closest('.showplace').remove();
+// };
 
-const handlerAddLike = (evt) => {
-    evt.target.closest('.showplace__like').classList.toggle('showplace__like_active');
-};
+// const handlerAddLike = (evt) => {
+//     evt.target.closest('.showplace__like').classList.toggle('showplace__like_active');
+// };
 
-const handleImageClick = ('click', (evt) => {
-    openPopup(popupFullImage);
+// const handleImageClick = ('click', (evt) => {
+//     openPopup(popupFullImage);
 
-    const eTargetSrc = evt.currentTarget.src;
-    showplaceFullUrl.src = eTargetSrc;
+//     const eTargetSrc = evt.currentTarget.src;
+//     showplaceFullUrl.src = eTargetSrc;
 
-    const eTargetTitle = evt.currentTarget.alt;
-    showplaceFullTitle.textContent = eTargetTitle;
+//     const eTargetTitle = evt.currentTarget.alt;
+//     showplaceFullTitle.textContent = eTargetTitle;
 
-    const eTargetAlt = evt.currentTarget.alt;
-    showplaceFullUrl.alt = eTargetAlt;
-});
+//     const eTargetAlt = evt.currentTarget.alt;
+//     showplaceFullUrl.alt = eTargetAlt;
+// });
 
-const generateShowplace = (dataPhotoCard) => {
-    const newCardShowplace = cardTemplate.cloneNode(true);
-    const showplaceName = newCardShowplace.querySelector('.showplace__name');
-    const showplaceImage = newCardShowplace.querySelector('.showplace__image');
+// const generateShowplace = (dataPhotoCard) => {
+//     const newCardShowplace = cardTemplate.cloneNode(true);
+//     const showplaceName = newCardShowplace.querySelector('.showplace__name');
+//     const showplaceImage = newCardShowplace.querySelector('.showplace__image');
 
-    showplaceName.textContent = dataPhotoCard.name;
-    showplaceImage.src = dataPhotoCard.link;
-    showplaceImage.alt = dataPhotoCard.name;
+//     showplaceName.textContent = dataPhotoCard.name;
+//     showplaceImage.src = dataPhotoCard.link;
+//     showplaceImage.alt = dataPhotoCard.name;
 
-    const photoShowplaceRemove = newCardShowplace.querySelector('.showplace__remove');
-    photoShowplaceRemove.addEventListener('click', handlerDeleteCard);
+//     const photoShowplaceRemove = newCardShowplace.querySelector('.showplace__remove');
+//     photoShowplaceRemove.addEventListener('click', handlerDeleteCard);
 
-    const elemLike = newCardShowplace.querySelector('.showplace__like');
-    elemLike.addEventListener('click', handlerAddLike);
+//     const elemLike = newCardShowplace.querySelector('.showplace__like');
+//     elemLike.addEventListener('click', handlerAddLike);
 
-    showplaceImage.addEventListener('click', handleImageClick);
+//     showplaceImage.addEventListener('click', handleImageClick);
 
-    return newCardShowplace;
-};
+//     return newCardShowplace;
+// };
 
-const renderCard = (dataPhotoCard) => {
-    photoPlaceList.prepend(generateShowplace(dataPhotoCard));
-};
+// const renderCard = (dataPhotoCard) => {
+//     photoPlaceList.prepend(generateShowplace(dataPhotoCard));
+// };
 
 const keyHandler = (evt) => {
     if (evt.key === 'Escape') {
@@ -95,12 +95,12 @@ function addDisabled(button) {
     button.setAttribute('disabled', true);;
 };
 
-function photoSubmitHandler(evt) {
-    evt.preventDefault();
-    closePopup(popupShowplace);
-    renderCard({ name: photoTitle.value, link: photoUrl.value });
-    formAddPhoto.reset();
-};
+// function photoSubmitHandler(evt) {
+//     evt.preventDefault();
+//     closePopup(popupShowplace);
+//     renderCard({ name: photoTitle.value, link: photoUrl.value });
+//     formAddPhoto.reset();
+// };
 
 
 function closeByOverlayClick(evt) {
@@ -114,9 +114,9 @@ buttonsClosePopup.forEach((button) => {
     button.addEventListener('click', () => closePopup(popup));
 });
 
-initialCards.forEach((dataPhotoCard) => {
-    renderCard(dataPhotoCard);
-});
+// initialCards.forEach((dataPhotoCard) => {
+//     renderCard(dataPhotoCard);
+// });
 
 openBtnEdit.addEventListener('click', function () {
     openPopup(popupProfile);
@@ -138,4 +138,4 @@ popupFullImage.addEventListener('click', closeByOverlayClick);
 
 formProfile.addEventListener('submit', submitEditProfileForm);
 
-formAddPhoto.addEventListener('submit', photoSubmitHandler);
+// formAddPhoto.addEventListener('submit', photoSubmitHandler);
