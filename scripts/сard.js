@@ -1,4 +1,4 @@
-class Card {
+export class Card {
     constructor(text, image) {
         this._text = text;
         this._image = image;
@@ -27,46 +27,44 @@ class Card {
     _setEventListeners() {
         this._element.querySelector('.showplace__remove').addEventListener('click', () => {
             this._handlerDeleteCard();
-          });
+        });
 
         this._element.querySelector('.showplace__like').addEventListener('click', () => {
             this._handlerAddLike();
-          });
+        });
 
           this._element.querySelector('.showplace__image').addEventListener('click', () => {
             this._handleImageClick();
-          });
+        });
     }
 
     _handlerDeleteCard = () => {
         this._element.remove();
-        };
+    };
 
     _handlerAddLike = () => {
         this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
-            };
+    };
+
+    _openPopup = () => {
+        document.querySelector('.popup-full-img').classList.add('popup_opened');
+        document.addEventListener('keydown', this._keyHandler);
+    }
+
+    _closePopup = () => {
+        document.querySelector('.popup-full-img').classList.remove('popup_opened');
+    };
+
+    _keyHandler = (evt) => {
+        if (evt.key === 'Escape') {
+            this._closePopup();
+        }
+    };
 
     _handleImageClick = ('click', () => {
-                    openPopup(popupFullImage);
-                    document.querySelector('.popup-full-img__photo').src = this._image;
-                    document.querySelector('.popup-full-img__title').textContent = this._text;
-                    document.querySelector('.popup-full-img__photo').alt = this._text;
-                });
+        this._openPopup();
+        document.querySelector('.popup-full-img__photo').src = this._image;
+        document.querySelector('.popup-full-img__title').textContent = this._text;
+        document.querySelector('.popup-full-img__photo').alt = this._text;
+    });
 }
-
-initialCards.forEach((item) => {
-    const card = new Card(item.name, item.link);
-    const cardElement = card.generateCard();
-    document.querySelector('.photo-places').append(cardElement);
-});
-
-function photoSubmitHandler(evt) {
-    evt.preventDefault();
-    closePopup(popupShowplace);
-    const card = new Card(photoTitle.value, photoUrl.value );
-    const cardElement = card.generateCard();
-    document.querySelector('.photo-places').prepend(cardElement);
-    formAddPhoto.reset();
-};
-
-document.forms.formPhoto.addEventListener('submit', photoSubmitHandler);
