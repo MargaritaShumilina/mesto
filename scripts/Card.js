@@ -1,15 +1,18 @@
+import { popupFullImage, popupFullPhoto, popupFullPhotoTitle } from './index.js';
+
 export class Card {
-    constructor(text, image) {
+    constructor(text, image, templateSelector) {
         this._text = text;
         this._image = image;
+        this._templateSelector = templateSelector;
     }
     
     _getTemplate() {
         const cardElement = document
-        .querySelector('#showplace-card')
+        .querySelector(this._templateSelector)
         .content
         .querySelector('.showplace')
-        .cloneNode(true);
+        .cloneNode(true)
     
       return cardElement;
     }
@@ -17,9 +20,10 @@ export class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-        this._element.querySelector('.showplace__image').src = this._image;
+        const imageS = this._element.querySelector('.showplace__image');
+        imageS.src = this._image;
         this._element.querySelector('.showplace__name').textContent = this._text;
-        this._element.querySelector('.showplace__image').alt = this._text;
+        imageS.alt = this._text;
 
         return this._element;
     }
@@ -47,12 +51,13 @@ export class Card {
     };
 
     _openPopup = () => {
-        document.querySelector('.popup-full-img').classList.add('popup_opened');
+        popupFullImage.classList.add('popup_opened');
         document.addEventListener('keydown', this._keyHandler);
     }
 
     _closePopup = () => {
-        document.querySelector('.popup-full-img').classList.remove('popup_opened');
+        popupFullImage.classList.remove('popup_opened');
+        document.removeEventListener('keydown', this._keyHandler);
     };
 
     _keyHandler = (evt) => {
@@ -63,8 +68,8 @@ export class Card {
 
     _handleImageClick = ('click', () => {
         this._openPopup();
-        document.querySelector('.popup-full-img__photo').src = this._image;
-        document.querySelector('.popup-full-img__title').textContent = this._text;
-        document.querySelector('.popup-full-img__photo').alt = this._text;
+        popupFullPhoto.src = this._image;
+        popupFullPhotoTitle.textContent = this._text;
+        popupFullPhotoTitle.alt = this._text;
     });
 }
