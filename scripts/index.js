@@ -1,6 +1,7 @@
 import { initialCards } from './constants.js';
 import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js'; 
+import FormValidator from './FormValidator.js';
+import { popupFullImage } from './utils/utils.js';
 
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_status');
@@ -8,20 +9,18 @@ const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
 const openBtnEdit = document.querySelector('.profile__edit');
 const popupProfile = document.querySelector('.popup-profile');
-export const popupShowplace = document.querySelector('.popup-showplace');
+const popupShowplace = document.querySelector('.popup-showplace');
 const buttonsClosePopup = document.querySelectorAll('.popup__close');
-export const popupFullImage = document.querySelector('.popup-full-img');
-export const popupFullPhoto = document.querySelector('.popup-full-img__photo');
-export const popupFullPhotoTitle = document.querySelector('.popup-full-img__title');
 const formProfile = document.forms.formProfile;
-export const formAddPhoto = document.forms.formPhoto;
+const formAddPhoto = document.forms.formPhoto;
 const sectionAddPhoto = document.querySelector('.photo-places')
 const error = document.querySelector('.popup__input-error');
+const openBtnAdd = document.querySelector('.profile__add-photo');
 
 const photoTitle = document.querySelector('.popup__input_type_title');
 const photoUrl = document.querySelector('.popup__input_type_url');
 
-export const keyHandler = (evt) => {
+const keyHandler = (evt) => {
     if (evt.key === 'Escape') {
         closePopup(document.querySelector('.popup_opened'));
     }
@@ -90,6 +89,11 @@ openBtnEdit.addEventListener('click', function () {
     openPopup(popupProfile);
     nameInput.value = profileName.textContent;
     jobInput.value = profileStatus.textContent;
+});
+
+openBtnAdd.addEventListener('click', function () {
+    openPopup(popupShowplace);
+    validatorAddCard.disableSubmitButton();
 });
 
 popupProfile.addEventListener('click', closeByOverlayClick);

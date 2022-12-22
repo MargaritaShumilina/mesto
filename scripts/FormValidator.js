@@ -1,6 +1,4 @@
-import { popupShowplace, formAddPhoto, keyHandler } from './index.js'
-
-export class FormValidator {
+export default class FormValidator {
     constructor(validationConfig, form) {
         this._popupElement = validationConfig.popupElement;
         this._popupInput = validationConfig.popupInput;
@@ -19,16 +17,7 @@ export class FormValidator {
         this._toggleButtonState(inputList, this.inactiveButtonClass);
             });
         });
-        this._popupShowplaceFunction();
     };
-
-    _popupShowplaceFunction() {
-        document.querySelector('.profile__add-photo').addEventListener('click', () => {
-            popupShowplace.classList.add('popup_opened');
-            document.addEventListener('keydown', keyHandler);
-            this.disableSubmitButton();
-        });
-    }
 
     enableValidation() {
         this._setEventListeners(this._form);
@@ -83,8 +72,8 @@ export class FormValidator {
     };
 
     disableSubmitButton() {
-        const btnElement = formAddPhoto.elements.buttonPhoto;
+        const btnElement = document.forms.formPhoto.elements.buttonPhoto;
         btnElement.classList.add('popup__button_disabled');
         btnElement.setAttribute('disabled', true);
-    };
+    }
 }
