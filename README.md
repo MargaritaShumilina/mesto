@@ -1,4 +1,4 @@
-# Проектная работа - 7 спринт
+# Проектная работа - 8 спринт
 ## Проект: Mesto Russia
 ------
 * [Ссылка на проект в GitHub](https://margaritashumilina.github.io/mesto/)  
