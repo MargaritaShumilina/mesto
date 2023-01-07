@@ -5,12 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
-    <script src="./scripts/FormValidator.js" type="module" defer></script>
-    <script src="./scripts/index.js" type="module" defer></script>
-    <script src="./scripts/utils/utils.js" type="module" defer></script>
-    <script src="./scripts/constants.js" type="module" defer></script>
-    <script src="./scripts/Card.js" type="module" defer></script>
     <title>Mesto Russia</title>
     <meta name="description" content="Проект по добавлению картинок красивых мест России">
     <meta name="keyword" content="Mesto Russia JS">
@@ -19,11 +13,11 @@
 
 <body class="root">
     <header class="header">
-        <img class="logo" src="./blocks/logo/img/logo.svg" alt="Логотип">
+        <img class="logo" src="<%=require('./blocks/logo/img/logo.svg')%>" alt="Логотип">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./blocks/profile/img/profile-avatar.jpg" alt="Аватар">
+            <img class="profile__avatar" src="<%=require('./blocks/profile/img/profile-avatar.jpg')%>" alt="Аватар">
             <div class="profile__info">
                 <div class="profile__heading">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>

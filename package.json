@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "------\r * [Ссылка на проект в GitHub](https://margaritashumilina.github.io/mesto/)  \r Проектная работа по основам js, а также его взаимодействию с HTML версткой в рамках генерации картинок с опписаниями, выводу попапов, а также валидации попапов, верстка с макета в Figma адаптивного по дизайну сайта с popup.\r ### Используемые технологии:\r  * JS;\r  * Grid;\r  * Флексбокс-верстка;\r  * Адаптивная верстка с использованием относительных единиц и медиазапросов;",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MargaritaShumilina/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MargaritaShumilina/mesto/issues"
+  },
+  "homepage": "https://github.com/MargaritaShumilina/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "cssnano": "^5.1.14",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "postcss-loader": "^7.0.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "core-js": "^3.27.1"
+  }
+}
