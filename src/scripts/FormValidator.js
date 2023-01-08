@@ -6,11 +6,11 @@ export default class FormValidator {
         this._inactiveButtonClass = validationConfig.inactiveButtonClass;
         this._inputErrorClass = validationConfig.inputErrorClass;
         this._form = form;
+        this.btnElement = this._form.querySelector(this._buttonElement)
     }
     
     _setEventListeners() {
         const inputList = Array.from(this._form.querySelectorAll(this._popupInput));
-        const buttonElement = this._form.querySelector(this._buttonElement);
         inputList.forEach((popupInput) => {
         popupInput.addEventListener('input', (e) => {
         this._toggleInputErrorState(e.target);
@@ -60,20 +60,18 @@ export default class FormValidator {
     };
     
     _addDisabledBtnClass() {
-        const btnElement = this._form.querySelector(this._buttonElement)
-        btnElement.classList.add(this._inactiveButtonClass);
-        btnElement.setAttribute('disabled', true);
+        this.btnElement.classList.add(this._inactiveButtonClass);
+        this.btnElement.setAttribute('disabled', true);
     };
     
     _removeDisabledBtnClass() {
-        const btnElement = this._form.querySelector(this._buttonElement)
-        btnElement.classList.remove(this._inactiveButtonClass);
-        btnElement.removeAttribute('disabled');
+        this.btnElement.classList.remove(this._inactiveButtonClass);
+        this.btnElement.removeAttribute('disabled');
     };
 
     disableSubmitButton() {
         const btnElement = document.forms.formPhoto.elements.buttonPhoto;
-        btnElement.classList.add('popup__button_disabled');
-        btnElement.setAttribute('disabled', true);
+        this.btnElement.classList.add('popup__button_disabled');
+        this.btnElement.setAttribute('disabled', true);
     }
 }
