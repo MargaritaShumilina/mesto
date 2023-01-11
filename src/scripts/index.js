@@ -1,8 +1,8 @@
-import { initialCards } from './constants.js';
-import { Card } from './Card.js';
-import FormValidator from './FormValidator.js';
-import { popupFullImage } from './utils/utils.js';
-import Popup from './Popup.js';
+// import { initialCards } from './constants.js';
+// import { Card } from './Card.js';
+// import FormValidator from './FormValidator.js';
+// import { popupFullImage } from './utils/utils.js';
+// import Popup from './Popup.js';
 
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_status');

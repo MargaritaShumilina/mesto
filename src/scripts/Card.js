@@ -1,10 +1,11 @@
 import { popupFullImage, popupFullPhoto, popupFullPhotoTitle } from './utils/utils.js';
 
 export class Card {
-    constructor(text, image, templateSelector) {
+    constructor(text, image, templateSelector, openImage) {
         this._text = text;
         this._image = image;
         this._templateSelector = templateSelector;
+        this.openImage = this.openImage;
     }
     
     _getTemplate() {
@@ -27,6 +28,12 @@ export class Card {
 
         return this._element;
     }
+
+    // openImageFunction() {
+    //     this._initialArray.forEach(item => {
+    //         this.openImage(item);
+    //       });
+    //     }
 
     _setEventListeners() {
         this._element.querySelector('.showplace__remove').addEventListener('click', () => {
