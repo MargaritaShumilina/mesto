@@ -1,11 +1,12 @@
 import { popupFullImage, popupFullPhoto, popupFullPhotoTitle } from './utils/utils.js';
 
 export class Card {
-    constructor(text, image, templateSelector, openImage) {
+    constructor({text, image, templateSelector, handleCardClick}) {
         this._text = text;
         this._image = image;
         this._templateSelector = templateSelector;
-        this.openImage = this.openImage;
+        // this.openImage = this.openImage;
+        this.handleCardClick = handleCardClick;
     }
     
     _getTemplate() {
@@ -73,10 +74,7 @@ export class Card {
         }
     };
 
-    _handleImageClick = ('click', () => {
-        this._openPopup();
-        popupFullPhoto.src = this._image;
-        popupFullPhotoTitle.textContent = this._text;
-        popupFullPhotoTitle.alt = this._text;
-    });
+    _handleImageClick = () => {
+        this.handleCardClick();
+    };
 }
