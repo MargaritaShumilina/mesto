@@ -2,12 +2,11 @@ import './index.css';
 
 import { Card } from './scripts/Card.js';
 import FormValidator from './scripts/FormValidator.js';
-// import { popupFullImage } from './scripts/utils/utils.js';
-import { popupFullImage, popupFullPhoto, popupFullPhotoTitle } from './scripts/utils/utils.js';
+import { popupFullImage } from './scripts/utils/utils.js';
 import Popup from './scripts/Popup.js';
 import Section from './scripts/Section.js';
-import { PopupWithImage } from './scripts/Popup.js';
-import { PopupWithForm } from './scripts/Popup.js';
+import { PopupWithImage } from './scripts/PopupWithImage.js';
+import { PopupWithForm } from './scripts/PopupWithForm.js';
 import UserInfo from './scripts/UserInfo.js';
 import { initialCards } from './scripts/constants.js';
 
@@ -28,19 +27,12 @@ const photoUrl = document.querySelector('.popup__input_type_url');
 
 const showplace = '.photo-places';
 
-//константы и вызовы класса Popup
 const popupEditProfile = new Popup(popupProfile);
 const popupAddPhoto = new Popup(popupShowplace);
 const popupFullImg = new Popup(popupFullImage);
-popupEditProfile.setEventListeners(popupProfile);
-popupAddPhoto.setEventListeners(popupShowplace);
-popupFullImg.setEventListeners(popupFullImage);
 
-//константы и вызовы класса PopupWithForm
 const popupEdProfile = new PopupWithForm(popupProfile, submitEditProfileForm, formProfile);
 const popupAdPhoto = new PopupWithForm(popupShowplace, photoSubmitHandler, formAddPhoto);
-popupEdProfile.setEventListeners(popupProfile);
-popupAdPhoto.setEventListeners(popupShowplace);
 
 const formConfig = {
     popupElement: '.popup__form',
@@ -50,15 +42,11 @@ const formConfig = {
     inputErrorClass: 'popup__input_type_error',
 };
 
-//константы и вызовы класса FormValidator
 const validatorEditProfile = new FormValidator(formConfig, formProfile);
 const validatorAddCard = new FormValidator(formConfig, formAddPhoto);
 
-//константы и вызовы класса PopupWithImage
 const popupFI = new PopupWithImage(popupFullImage);
 
-
-//константы и вызовы класса Section
 const addCardToTemplate = new Section ({
     items: initialCards,
     renderer: (item) => {
@@ -77,16 +65,9 @@ const addCardToTemplate = new Section ({
     showplace
 );
 
-//константы вызова UserInfo
 const handleUserInfo = new UserInfo({
     name: profileName.textContent, 
     status: profileStatus.textContent});
-
-    
-handleUserInfo.setUserInfo();
-handleUserInfo.getUserInfo();
-
-addCardToTemplate.renderItems();
 
 function submitEditProfileForm(evt) {
     evt.preventDefault();
@@ -127,3 +108,14 @@ openBtnAdd.addEventListener('click', function () {
     
 validatorEditProfile.enableValidation();
 validatorAddCard.enableValidation();
+handleUserInfo.setUserInfo();
+handleUserInfo.getUserInfo();
+
+addCardToTemplate.renderItems();
+
+popupEditProfile.setEventListeners(popupProfile);
+popupAddPhoto.setEventListeners(popupShowplace);
+popupFullImg.setEventListeners(popupFullImage);
+
+popupEdProfile.setEventListeners(popupProfile);
+popupAdPhoto.setEventListeners(popupShowplace);

@@ -1,34 +1,32 @@
-// import Popup from './Popup.js';
+import Popup from './Popup.js';
 
-// export default class PopupWithForm extends Popup {
-//     constructor(popupSelector, callbackSubmitForm) {
-//         super(setEventListeners(), close())
-//         this.popupSelector = popupSelector;
-//         this.callbackSubmitForm = callbackSubmitForm;
-//     }
+export class PopupWithForm extends Popup {
+    constructor(popupSelector, callbackSubmitForm, formSelector) {
+        super(popupSelector);
+        this.popupSelector = popupSelector;
+        this.callbackSubmitForm = callbackSubmitForm;
+        this.formSelector = formSelector;
+    }
 
-//     _getInputValues() {
+//собирает данные всех полей формы
+    _getInputValues() {
+        const formFields = this.formSelector.querySelectorAll('.popup__input');
+        const values = {};
+        formFields.forEach((field) => {
+            const {name, value} = field;
+            values[name] = value;
+            console.log(field.value);
+        })
+    }
 
-//     }
+    setEventListeners(popupSelector) {
+        super.setEventListeners(popupSelector);
+        popupSelector.addEventListener('submit', this._getInputValues.bind(this));
+        popupSelector.addEventListener('submit', this.callbackSubmitForm.bind(this));
+    }
 
-//     setEventListeners() {
-//         formProfile.addEventListener('submit', this.submitEditProfileForm);
-//         document.forms.formPhoto.addEventListener('submit', this.photoSubmitHandler);
-//     }
-
-//     photoSubmitHandler(evt) {
-//         evt.preventDefault();
-//         popupAddPhoto.closePopup(popupShowplace);
-//         const card = createCard(photoTitle.value, photoUrl.value, '#showplace-card');
-//         const cardElement = card.generateCard();
-//         sectionAddPhoto.prepend(cardElement);
-//         formAddPhoto.reset();
-//     };
-
-//     submitEditProfileForm(evt) {
-//         evt.preventDefault();
-//         profileName.textContent = nameInput.value;
-//         profileStatus.textContent = jobInput.value;
-//         popupEditProfile.closePopup(popupProfile);
-//     };
-// }
+    closePopup(popupSelector) {
+        super.closePopup(popupSelector);
+        this.formSelector.reset();
+    }
+}

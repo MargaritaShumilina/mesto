@@ -1,22 +1,16 @@
 import Popup from './Popup.js';
+import { popupFullPhoto, popupFullPhotoTitle } from './utils/utils.js';
 
-export default class PopupWithImage extends Popup {
-    constructor(popupSelector, photo, title) {
+export class PopupWithImage extends Popup {
+    constructor(popupSelector) {
        super(popupSelector);
        this.popupSelector = popupSelector;
-       this.photo = photo;
-       this.title = title;
     }
 
-    // openPopup(popupSelector) {
-    //     popupSelector.classList.add('popup_opened');
-    //     document.addEventListener('keydown', this._handleEscClose.bind(this));
-    // }
-
-    handleCardClick() {
+    openPopup(popupSelector, photo, title, alt) {
         super.openPopup(popupSelector);
-        this.photo.src = this.photo;
-        this.title.textContent = this.title;
-        this.title.alt = this.title;
+        popupFullPhoto.src = photo;
+        popupFullPhotoTitle.textContent = title;
+        popupFullPhoto.alt = alt;
     }
 }
