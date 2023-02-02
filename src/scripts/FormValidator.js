@@ -70,7 +70,7 @@ export default class FormValidator {
     };
 
     disableSubmitButton() {
-        const btnElement = document.forms.formPhoto.elements.buttonPhoto;
+        // const btnElement = document.forms.formPhoto.elements.buttonPhoto;
         this.btnElement.classList.add('popup__button_disabled');
         this.btnElement.setAttribute('disabled', true);
     }

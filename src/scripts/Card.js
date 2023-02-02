@@ -5,8 +5,8 @@ export class Card {
         this._text = text;
         this._image = image;
         this._templateSelector = templateSelector;
-        // this.openImage = this.openImage;
         this.handleCardClick = handleCardClick;
+        this.likeButton = '.showplace__like';
     }
     
     _getTemplate() {
@@ -30,18 +30,12 @@ export class Card {
         return this._element;
     }
 
-    // openImageFunction() {
-    //     this._initialArray.forEach(item => {
-    //         this.openImage(item);
-    //       });
-    //     }
-
     _setEventListeners() {
         this._element.querySelector('.showplace__remove').addEventListener('click', () => {
             this._handlerDeleteCard();
         });
 
-        this._element.querySelector('.showplace__like').addEventListener('click', () => {
+        this._element.querySelector(this.likeButton).addEventListener('click', () => {
             this._handlerAddLike();
         });
 
@@ -52,27 +46,28 @@ export class Card {
 
     _handlerDeleteCard = () => {
         this._element.remove();
+        this._element = null;
     };
 
     _handlerAddLike = () => {
         this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
     };
 
-    _openPopup = () => {
-        popupFullImage.classList.add('popup_opened');
-        document.addEventListener('keydown', this._keyHandler);
-    }
+    // _openPopup = () => {
+    //     popupFullImage.classList.add('popup_opened');
+    //     document.addEventListener('keydown', this._keyHandler);
+    // }
 
-    _closePopup = () => {
-        popupFullImage.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._keyHandler);
-    };
+    // _closePopup = () => {
+    //     popupFullImage.classList.remove('popup_opened');
+    //     document.removeEventListener('keydown', this._keyHandler);
+    // };
 
-    _keyHandler = (evt) => {
-        if (evt.key === 'Escape') {
-            this._closePopup();
-        }
-    };
+    // _keyHandler = (evt) => {
+    //     if (evt.key === 'Escape') {
+    //         this._closePopup();
+    //     }
+    // };
 
     _handleImageClick = () => {
         this.handleCardClick();
