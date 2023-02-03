@@ -1,39 +1,31 @@
 import './index.css';
 
-import { Card } from './scripts/Card.js';
+import {Card} from './scripts/Card.js';
 import FormValidator from './scripts/FormValidator.js';
-import { popupFullImage } from './scripts/utils/utils.js';
+import {popupFullImage} from './scripts/utils/utils.js';
 import Popup from './scripts/Popup.js';
 import Section from './scripts/Section.js';
-import { PopupWithImage } from './scripts/PopupWithImage.js';
-import { PopupWithForm } from './scripts/PopupWithForm.js';
+import {PopupWithImage} from './scripts/PopupWithImage.js';
+import {PopupWithForm} from './scripts/PopupWithForm.js';
 import UserInfo from './scripts/UserInfo.js';
-import { initialCards } from './scripts/constants.js';
-
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_status');
-
-const profileName = document.querySelector('.profile__name');
-const profileStatus = document.querySelector('.profile__status');
+import {initialCards} from './scripts/constants.js';
 
 const profileNameSelector = '.profile__name';
 const profileStatusSelector = '.profile__status';
+const templateCardSelector = '#showplace-card';
+const showplace = '.photo-places';
 
+const nameInput = document.querySelector('.popup__input_type_name');
+
+const jobInput = document.querySelector('.popup__input_type_status');
 const openBtnEdit = document.querySelector('.profile__edit');
 const popupProfile = document.querySelector('.popup-profile');
 const popupShowplace = document.querySelector('.popup-showplace');
 const formProfile = document.forms.formProfile;
+
 const formAddPhoto = document.forms.formPhoto;
-const sectionAddPhoto = document.querySelector('.photo-places')
+
 const openBtnAdd = document.querySelector('.profile__add-photo');
-
-const photoTitle = document.querySelector('.popup__input_type_title');
-const photoUrl = document.querySelector('.popup__input_type_url');
-
-const showplace = '.photo-places';
-
-const inputName = document.querySelector('.popup__input_type_name').textContent;
-const inputStatus = document.querySelector('.popup__input_type_status').textContent;
 
 const popupEditProfile = new Popup(popupProfile);
 const popupAddPhoto = new Popup(popupShowplace);
@@ -57,41 +49,43 @@ const popupFI = new PopupWithImage(popupFullImage);
 
 function addNewCard(text, image, templateSelector) {
     const card = new Card({
-        text: text, 
-        image: image, 
-        templateSelector: templateSelector, 
-    handleCardClick: () => {
-        popupFI.openPopup(popupFullImage, image, text, text);
-    }
+        text: text,
+        image: image,
+        templateSelector: templateSelector,
+        handleCardClick: () => {
+            popupFI.openPopup(popupFullImage, image, text, text);
+        }
     });
     const cardElement = card.generateCard();
     addCardToTemplate.addItem(cardElement);
     return cardElement;
 };
 
-const addCardToTemplate = new Section ({
-    items: initialCards,
-    renderer: (item) => {
-        addNewCard(item.name, item.link, '#showplace-card');
+const addCardToTemplate = new Section({
+        items: initialCards,
+        renderer: (item) => {
+            addNewCard(item.name, item.link, templateCardSelector);
+        },
     },
-},
     showplace
 );
 
 const handleUserInfo = new UserInfo({
-    nameInfo: profileName, 
-    statusInfo: profileStatus});
+    nameSelector: profileNameSelector,
+    statusSelector: profileStatusSelector
+});
 
-function submitEditProfileForm() {
-    // popupEdProfile._getInputValues();
-    profileName.textContent = handleUserInfo.setUserInfo(nameInput, jobInput);
-    // profileName.textContent = handleUserInfo.setUserInfo(nameInput.value, jobInput.value);
-    // profileStatus.textContent = jobInput.value;
-    popupEditProfile.closePopup(popupProfile);
+function submitEditProfileForm(allValues) {
+    handleUserInfo.setUserInfo(allValues['name'], allValues['status'])
+
+    popupEdProfile.closePopup(popupProfile);
+
 };
 
 function photoSubmitHandler() {
-    addNewCard(photoTitle.value, photoUrl.value, '#showplace-card');
+    const { title, url } = popupAdPhoto._getInputValues();
+
+    addNewCard(title, url, templateCardSelector);
     popupAddPhoto.closePopup(popupShowplace);
     formAddPhoto.reset();
 };
@@ -108,11 +102,9 @@ openBtnAdd.addEventListener('click', function () {
     popupAddPhoto.openPopup(popupShowplace);
     validatorAddCard.disableSubmitButton();
 });
-    
+
 validatorEditProfile.enableValidation();
 validatorAddCard.enableValidation();
-handleUserInfo.setUserInfo();
-handleUserInfo.getUserInfo();
 
 addCardToTemplate.renderItems();
 
