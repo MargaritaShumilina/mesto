@@ -8,7 +8,8 @@ import Section from './scripts/Section.js';
 import {PopupWithImage} from './scripts/PopupWithImage.js';
 import {PopupWithForm} from './scripts/PopupWithForm.js';
 import UserInfo from './scripts/UserInfo.js';
-import { initialCards, profileNameSelector, profileStatusSelector, templateCardSelector, showplace, nameInput, jobInput, openBtnEdit, popupProfile, popupShowplace, formProfile, formAddPhoto, openBtnAdd, formConfig } from './scripts/constants.js';
+import { initialCards } from './scripts/constants.js';
+import { profileNameSelector, profileStatusSelector, templateCardSelector, showplace, nameInput, jobInput, openBtnEdit, popupProfile, popupShowplace, formProfile, formAddPhoto, openBtnAdd, formConfig } from './scripts/utils/utils.js';
 
 const popupEditProfile = new Popup(popupProfile);
 const popupAddPhoto = new Popup(popupShowplace);

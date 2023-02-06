@@ -1,5 +1,3 @@
-import { popupFullImage, popupFullPhoto, popupFullPhotoTitle } from './utils/utils.js';
-
 export class Card {
     constructor({text, image, templateSelector, handleCardClick}) {
         this._text = text;
