@@ -47,30 +47,29 @@ const addCardToTemplate = new Section({
 );
 
 const handleUserInfo = new UserInfo({
-    nameSelector: profileNameSelector,
-    statusSelector: profileStatusSelector
+    nameElement: profileNameSelector,
+    statusElement: profileStatusSelector
 });
 
 function submitEditProfileForm(allValues) {
-    console.log(4, allValues);
-    console.log(5, allValues['name']);
     handleUserInfo.setUserInfo(allValues['name'], allValues['status']);
     popupEdProfile.closePopup(popupProfile);
 
 };
 
-function photoSubmitHandler() {
-    const { title, url } = popupAdPhoto._getInputValues();
-    addNewCard(title, url, templateCardSelector);
+function photoSubmitHandler(allValues) {
+    addNewCard(allValues['title'], allValues['url'], templateCardSelector);
     popupAddPhoto.closePopup(popupShowplace);
     formAddPhoto.reset();
 };
 
+
 openBtnEdit.addEventListener('click', function () {
     formProfile.reset();
     popupEditProfile.openPopup();
-    nameInput.value = handleUserInfo.getUserInfo().name;
-    jobInput.value = handleUserInfo.getUserInfo().status;
+    const profileInputValues = handleUserInfo.getUserInfo();
+    nameInput.value = profileInputValues.name;
+    jobInput.value = profileInputValues.status;
 });
 
 openBtnAdd.addEventListener('click', function () {

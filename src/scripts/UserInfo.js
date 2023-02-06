@@ -1,21 +1,21 @@
 export default class UserInfo {
-    constructor({nameSelector, statusSelector}) {
-        this.nameSelector = document.querySelector(nameSelector);
-        this.statusSelector = document.querySelector(statusSelector);
+    constructor({nameElement, statusElement}) {
+        this.nameElement = document.querySelector(nameElement);
+        this.statusElement = document.querySelector(statusElement);
     }
 
     //возвращает объект с данными пользователя
     getUserInfo() {
         return {
-            name: this.nameSelector.textContent,
-            status: this.statusSelector.textContent
+            name: this.nameElement.textContent,
+            status: this.statusElement.textContent
         };
     }
 
     //принимает новые данные пользователя и добавляет их на страницу
     setUserInfo(name, status) {
-        this.nameSelector.textContent = name;
-        this.statusSelector.textContent = status;
+        this.nameElement.textContent = name;
+        this.statusElement.textContent = status;
     }
 
 }
