@@ -7,14 +7,14 @@ export default class FormValidator {
         this._inputErrorClass = validationConfig.inputErrorClass;
         this._form = form;
         this.btnElement = this._form.querySelector(this._buttonElement)
+        this.inputList = Array.from(this._form.querySelectorAll(this._popupInput));
     }
     
     _setEventListeners() {
-        const inputList = Array.from(this._form.querySelectorAll(this._popupInput));
-        inputList.forEach((popupInput) => {
+        this.inputList.forEach((popupInput) => {
         popupInput.addEventListener('input', (e) => {
         this._toggleInputErrorState(e.target);
-        this._toggleButtonState(inputList, this.inactiveButtonClass);
+        this._toggleButtonState(this.inputList, this.inactiveButtonClass);
             });
         });
     };
@@ -53,13 +53,13 @@ export default class FormValidator {
     
     _toggleButtonState(inputList) {
         if (this._hasInvalidInput(inputList)) {
-            this._addDisabledBtnClass(this._buttonElement, this._inactiveButtonClass);
+            this.addDisabledBtnClass(this._buttonElement, this._inactiveButtonClass);
         } else {
             this._removeDisabledBtnClass(this._buttonElement, this._inactiveButtonClass);
         }
     };
     
-    _addDisabledBtnClass() {
+    addDisabledBtnClass() {
         this.btnElement.classList.add(this._inactiveButtonClass);
         this.btnElement.setAttribute('disabled', true);
     };
@@ -68,10 +68,4 @@ export default class FormValidator {
         this.btnElement.classList.remove(this._inactiveButtonClass);
         this.btnElement.removeAttribute('disabled');
     };
-
-    disableSubmitButton() {
-        // const btnElement = document.forms.formPhoto.elements.buttonPhoto;
-        this.btnElement.classList.add('popup__button_disabled');
-        this.btnElement.setAttribute('disabled', true);
-    }
 }

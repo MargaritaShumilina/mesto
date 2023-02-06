@@ -8,24 +8,7 @@ import Section from './scripts/Section.js';
 import {PopupWithImage} from './scripts/PopupWithImage.js';
 import {PopupWithForm} from './scripts/PopupWithForm.js';
 import UserInfo from './scripts/UserInfo.js';
-import {initialCards} from './scripts/constants.js';
-
-const profileNameSelector = '.profile__name';
-const profileStatusSelector = '.profile__status';
-const templateCardSelector = '#showplace-card';
-const showplace = '.photo-places';
-
-const nameInput = document.querySelector('.popup__input_type_name');
-
-const jobInput = document.querySelector('.popup__input_type_status');
-const openBtnEdit = document.querySelector('.profile__edit');
-const popupProfile = document.querySelector('.popup-profile');
-const popupShowplace = document.querySelector('.popup-showplace');
-const formProfile = document.forms.formProfile;
-
-const formAddPhoto = document.forms.formPhoto;
-
-const openBtnAdd = document.querySelector('.profile__add-photo');
+import { initialCards, profileNameSelector, profileStatusSelector, templateCardSelector, showplace, nameInput, jobInput, openBtnEdit, popupProfile, popupShowplace, formProfile, formAddPhoto, openBtnAdd, formConfig } from './scripts/constants.js';
 
 const popupEditProfile = new Popup(popupProfile);
 const popupAddPhoto = new Popup(popupShowplace);
@@ -33,14 +16,6 @@ const popupFullImg = new Popup(popupFullImage);
 
 const popupEdProfile = new PopupWithForm(popupProfile, submitEditProfileForm, formProfile);
 const popupAdPhoto = new PopupWithForm(popupShowplace, photoSubmitHandler, formAddPhoto);
-
-const formConfig = {
-    popupElement: '.popup__form',
-    popupInput: '.popup__input',
-    buttonElement: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-};
 
 const validatorEditProfile = new FormValidator(formConfig, formProfile);
 const validatorAddCard = new FormValidator(formConfig, formAddPhoto);
@@ -76,15 +51,15 @@ const handleUserInfo = new UserInfo({
 });
 
 function submitEditProfileForm(allValues) {
-    handleUserInfo.setUserInfo(allValues['name'], allValues['status'])
-
+    console.log(4, allValues);
+    console.log(5, allValues['name']);
+    handleUserInfo.setUserInfo(allValues['name'], allValues['status']);
     popupEdProfile.closePopup(popupProfile);
 
 };
 
 function photoSubmitHandler() {
     const { title, url } = popupAdPhoto._getInputValues();
-
     addNewCard(title, url, templateCardSelector);
     popupAddPhoto.closePopup(popupShowplace);
     formAddPhoto.reset();
@@ -92,15 +67,15 @@ function photoSubmitHandler() {
 
 openBtnEdit.addEventListener('click', function () {
     formProfile.reset();
-    popupEditProfile.openPopup(popupProfile);
+    popupEditProfile.openPopup();
     nameInput.value = handleUserInfo.getUserInfo().name;
     jobInput.value = handleUserInfo.getUserInfo().status;
 });
 
 openBtnAdd.addEventListener('click', function () {
     formAddPhoto.reset();
-    popupAddPhoto.openPopup(popupShowplace);
-    validatorAddCard.disableSubmitButton();
+    popupAddPhoto.openPopup();
+    validatorAddCard.addDisabledBtnClass();
 });
 
 validatorEditProfile.enableValidation();

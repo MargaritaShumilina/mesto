@@ -53,22 +53,6 @@ export class Card {
         this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
     };
 
-    // _openPopup = () => {
-    //     popupFullImage.classList.add('popup_opened');
-    //     document.addEventListener('keydown', this._keyHandler);
-    // }
-
-    // _closePopup = () => {
-    //     popupFullImage.classList.remove('popup_opened');
-    //     document.removeEventListener('keydown', this._keyHandler);
-    // };
-
-    // _keyHandler = (evt) => {
-    //     if (evt.key === 'Escape') {
-    //         this._closePopup();
-    //     }
-    // };
-
     _handleImageClick = () => {
         this.handleCardClick();
     };
