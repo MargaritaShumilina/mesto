@@ -30,4 +30,8 @@ export class PopupWithForm extends Popup {
         super.closePopup(popupElement);
         this.formElement.reset();
     }
+
+    // loadingButton() {
+
+    // }
 }

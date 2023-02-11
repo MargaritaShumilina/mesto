@@ -17,13 +17,13 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('./blocks/profile/img/profile-avatar.jpg')%>" alt="Аватар">
+            <div class="profile__avatar-edit"><img class="profile__avatar" src="" alt="Аватар"></div>
             <div class="profile__info">
                 <div class="profile__heading">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <h1 class="profile__name"></h1>
                     <button class="profile__edit" type="button"></button>
                 </div>
-                <p class="profile__status">Исследователь океана</p>
+                <p class="profile__status"></p>
             </div>
             <button class="profile__add-photo" type="button"></button>
         </section>
@@ -78,13 +78,37 @@
             </figure>
         </div>
     </div>
+    <div class="popup popup-are-you-sure">
+        <div class="popup__container popup-are-you-sure__container">
+            <button class="popup__close popup-are-you-sure__close" type="button"></button>
+            <h2 class="popup__title popup__title-without-inputs">Вы уверены?</h2>
+            <button class="popup__button" type="submit" value="Да">Да</button>
+        </div>
+    </div>
+    <div class="popup popup-avatar">
+        <div class="popup__container popup-avatar__container">
+            <button class="popup__close popup-avatar__close" type="button"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form name="formAvatar" class="popup__form" novalidate>
+                <fieldset class="popup__fieldset">
+                    <input class="popup__input popup__input_type_url" type="url" name="url"
+                        placeholder="Ссылка на новый аватар" required id="popup-url-avatar">
+                    <span class="popup-url-avatar-error popup__input-error"></span>
+                </fieldset>
+                <button name="buttonPhoto" class="popup__button" type="submit" value="Сохранить">Сохранить</button>
+            </form>
+        </div>
+    </div>
     <template id="showplace-card">
         <article class="showplace">
             <button class="showplace__remove" type="button"></button>
             <img class="showplace__image">
             <div class="showplace__signature">
                 <h2 class="showplace__name"></h2>
+                <div class="showplace__information">
                 <button class="showplace__like" type="button"></button>
+                <p class="showplace__people-likes"></p>
+                </div>
             </div>
         </article>
     </template>
