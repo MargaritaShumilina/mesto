@@ -1,5 +1,4 @@
 export const popupFullImage = document.querySelector('.popup-full-img');
-
 export const profileNameSelector = '.profile__name';
 export const profileStatusSelector = '.profile__status';
 export const templateCardSelector = '#showplace-card';
@@ -17,6 +16,7 @@ export const popupSaveAvatarElement = document.querySelector('.popup-avatar');
 export const popupRemove = document.querySelector('.popup-are-you-sure');
 export const profileAvatarSelector = '.profile__avatar';
 export const profileAvatarImage = document.querySelector('.profile__avatar');
+export const formSaveAvatar = document.forms.formAvatar;
 export const formConfig = {
     popupElement: '.popup__form',
     popupInput: '.popup__input',

@@ -36,7 +36,7 @@ export class Card {
         imageShowplace.src = this._image;
         this._element.querySelector('.showplace__name').textContent = this._text;
         imageShowplace.alt = this._text;
-        this.likeInf()
+        this.likeInf();
         this._colorLikeIcon();
         this._addTrashButton();
         return this._element;
@@ -48,13 +48,12 @@ export class Card {
         });
 
         this._element.querySelector(this.likeButton).addEventListener('click', () => {
-            this.likeMethod()
+            this.likeMethod();
         });
 
         this._element.querySelector('.showplace__image').addEventListener('click', () => {
             this._handleImageClick();
         });
-
     }
 
     likeInf() {
@@ -67,41 +66,41 @@ export class Card {
 
     handlerDeleteCard() {
         this._element.remove();
-        this._element = null;
     };
 
-    _handlerAddLike() {
-        this._colorLike();
-        // this._likeElement.textContent = Number(this._likeElement.textContent) - 1;
-    };
-
-    _handlerDeleteLike() {
-        this._colorLike();
-        // this._likeElement.textContent = Number(this._likeElement.textContent) - 1;
-    };
-
-
-    _colorLike() {
-        this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
+    colorLike() {
+        // this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
+        if (this._likes.some(like => like._id === this.userId)) {
+            this._element.querySelector(this._likesSelector).classList.add('.showplace__like_active')
+        } else {
+            this._element.querySelector(this._likesSelector).classList.remove('.showplace__like_active')
+        }
     };
 
     _colorLikeIcon = () => {
+        console.log(this._likes);
         if (this._likes.some(like => like._id === this.userId)) {
-            this._colorLike();
+            // this.colorLike();
+            this._element.querySelector(this._likesSelector).classList.add('.showplace__like_active')
         } else {
-            this._element.querySelector('.showplace__like');
+            // this._element.querySelector('.showplace__like');
+            this._element.querySelector(this._likesSelector).classList.remove('.showplace__like_active')
         }
     };
 
     likeMethod() {
         if (this._likes.some(like => like._id === this.userId)) {
             this.handleDeleteLike(this.id);
-            this._handlerDeleteLike(this.id);
         } else {
             this.handleLike(this.id);
-            this._handlerAddLike(this.id);
         }
     };
+
+    setLikesCount(likes) {
+        this._likeCounter = this._element.querySelector(this._likesSelector);
+        this._likeCounter.textContent = likes;
+        this._likes = likes;
+    }
 
     _handleImageClick = () => {
         this.handleCardClick();
@@ -111,9 +110,6 @@ export class Card {
         this.handlePopupRemove();
     };
 
-    //Добавляется после обновления странцы, потому что берет значение моего id с сервера при загрузке профиля,
-    //как и обновление количества лайков.
-    //Не уверена, что это правильная реализация, если подскажете, как правильно, то буду вам очень благодарна :)
     _addTrashButton() {
         if (this.ownerId === this.userId) {
             this._element.querySelector(this._removeSelector).style.visibility = "visible";

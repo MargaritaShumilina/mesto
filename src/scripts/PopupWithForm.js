@@ -19,9 +19,9 @@ export class PopupWithForm extends Popup {
         return values;
     }
 
-    setEventListeners(popupElement) {
-        super.setEventListeners(popupElement);
-        popupElement.addEventListener('submit', (evt) => {
+    setEventListeners() {
+        super.setEventListeners();
+        this.popupElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this.callbackSubmitForm(this._getInputValues());
         });
@@ -32,14 +32,13 @@ export class PopupWithForm extends Popup {
         this.formElement.reset();
     }
 
-    loadingButton(trueValue) {
-        if (trueValue) {
+    loadingButton(value) {
+        if (value === true) {
             this.btnSubmit.textContent = 'Сохранение...';
-            console.log('Сохранение...');
             this.btnSubmit.setAttribute("disabled", true);
-        } else {
+        } 
+        else {
             this.btnSubmit.textContent = this.btnSubmit.value;
-            console.log(this.btnSubmit.value);
         }
     }
 }

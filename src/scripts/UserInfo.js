@@ -3,7 +3,7 @@ export default class UserInfo {
         this.nameElement = document.querySelector(nameElement);
         this.statusElement = document.querySelector(statusElement);
         this.avatarElement = document.querySelector(avatarElement);
-        this.id = null
+        this.id = null;
     }
 
     //возвращает объект с данными пользователя
@@ -13,10 +13,6 @@ export default class UserInfo {
             about: this.statusElement.textContent,
             avatar: this.avatarElement.src
         };
-    }
-
-    getUserId() {
-        return this.id
     }
 
     setAvatar(avatar) {
@@ -30,6 +26,10 @@ export default class UserInfo {
         this.statusElement.textContent = about;
         this.avatarElement.src = avatar;
         this.id = id;
+    }
+
+    getUserId() {
+        return this.id
     }
 
 }

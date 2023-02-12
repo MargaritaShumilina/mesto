@@ -3,14 +3,12 @@ import Popup from './Popup.js';
 export default class PopupConfirm extends Popup {
     constructor(popupElement) {
         super(popupElement);
-        this.popupElement = popupElement;
         this.callback = null;
-        this.confirmButtonElement = popupElement.querySelector('.popup__button');
-        this._setEventListener();
     }
 
-    _setEventListener() {
-        this.popupElement.addEventListener('click', (e) => {
+    setEventListeners() {
+        super.setEventListeners();
+        this.popupElement.addEventListener('submit', (e) => {
             e.preventDefault();
             this._onConfirm();
         })
@@ -23,7 +21,6 @@ export default class PopupConfirm extends Popup {
 
     _onConfirm() {
         this.callback();
-        this.closePopup();
     }
 
 }
