@@ -37,6 +37,7 @@ export class Card {
         this._element.querySelector('.showplace__name').textContent = this._text;
         imageShowplace.alt = this._text;
         this.likeInf();
+        // this._like()
         this._colorLikeIcon();
         this._addTrashButton();
         return this._element;
@@ -69,22 +70,19 @@ export class Card {
     };
 
     colorLike() {
-        // this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
-        if (this._likes.some(like => like._id === this.userId)) {
-            this._element.querySelector(this._likesSelector).classList.add('.showplace__like_active')
-        } else {
-            this._element.querySelector(this._likesSelector).classList.remove('.showplace__like_active')
-        }
+        this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
+        // if (this._likes.some(like => like._id === this.userId)) {
+        //     this._element.querySelector(this._likesSelector).classList.add('.showplace__like_active')
+        // } else {
+        //     this._element.querySelector(this._likesSelector).classList.remove('.showplace__like_active')
+        // }
     };
 
     _colorLikeIcon = () => {
-        console.log(this._likes);
         if (this._likes.some(like => like._id === this.userId)) {
-            // this.colorLike();
-            this._element.querySelector(this._likesSelector).classList.add('.showplace__like_active')
+            this.colorLike();
         } else {
-            // this._element.querySelector('.showplace__like');
-            this._element.querySelector(this._likesSelector).classList.remove('.showplace__like_active')
+            this._element.querySelector('.showplace__like');
         }
     };
 
@@ -95,12 +93,6 @@ export class Card {
             this.handleLike(this.id);
         }
     };
-
-    setLikesCount(likes) {
-        this._likeCounter = this._element.querySelector(this._likesSelector);
-        this._likeCounter.textContent = likes;
-        this._likes = likes;
-    }
 
     _handleImageClick = () => {
         this.handleCardClick();
@@ -114,5 +106,11 @@ export class Card {
         if (this.ownerId === this.userId) {
             this._element.querySelector(this._removeSelector).style.visibility = "visible";
         }
+    }
+
+    setLikesCount(likes) {
+        this._likeCounter = this._element.querySelector(this._likesSelector);
+        this._likeCounter.textContent = likes;
+        this._likes = likes;
     }
 }
