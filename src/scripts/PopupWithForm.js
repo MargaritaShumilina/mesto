@@ -6,6 +6,7 @@ export class PopupWithForm extends Popup {
         this.callbackSubmitForm = callbackSubmitForm.bind(this);
         this.formElement = formElement;
         this.formFields = this.formElement.querySelectorAll('.popup__input');
+        this.btnSubmit = this.popupElement.querySelector('.popup__button');
     }
 
 //собирает данные всех полей формы
@@ -26,12 +27,19 @@ export class PopupWithForm extends Popup {
         });
     }
 
-    closePopup(popupElement) {
-        super.closePopup(popupElement);
+    closePopup() {
+        super.closePopup();
         this.formElement.reset();
     }
 
-    // loadingButton() {
-
-    // }
+    loadingButton(trueValue) {
+        if (trueValue) {
+            this.btnSubmit.textContent = 'Сохранение...';
+            console.log('Сохранение...');
+            this.btnSubmit.setAttribute("disabled", true);
+        } else {
+            this.btnSubmit.textContent = this.btnSubmit.value;
+            console.log(this.btnSubmit.value);
+        }
+    }
 }

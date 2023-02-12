@@ -80,9 +80,11 @@
     </div>
     <div class="popup popup-are-you-sure">
         <div class="popup__container popup-are-you-sure__container">
-            <button class="popup__close popup-are-you-sure__close" type="button"></button>
-            <h2 class="popup__title popup__title-without-inputs">Вы уверены?</h2>
-            <button class="popup__button" type="submit" value="Да">Да</button>
+            <form name="formAreUSure" class="popup__form" novalidate>
+                <button class="popup__close popup-are-you-sure__close" type="button"></button>
+                <h2 class="popup__title popup__title-without-inputs">Вы уверены?</h2>
+                <button class="popup__button" type="submit" value="Да">Да</button>
+            </form>
         </div>
     </div>
     <div class="popup popup-avatar">
@@ -91,7 +93,7 @@
             <h2 class="popup__title">Обновить аватар</h2>
             <form name="formAvatar" class="popup__form" novalidate>
                 <fieldset class="popup__fieldset">
-                    <input class="popup__input popup__input_type_url" type="url" name="url"
+                    <input class="popup__input popup__input_type_url-avatar" type="url" name="url"
                         placeholder="Ссылка на новый аватар" required id="popup-url-avatar">
                     <span class="popup-url-avatar-error popup__input-error"></span>
                 </fieldset>
@@ -107,7 +109,7 @@
                 <h2 class="showplace__name"></h2>
                 <div class="showplace__information">
                 <button class="showplace__like" type="button"></button>
-                <p class="showplace__people-likes"></p>
+                <p class="showplace__people-likes">0</p>
                 </div>
             </div>
         </article>

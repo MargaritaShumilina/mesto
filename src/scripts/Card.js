@@ -1,5 +1,7 @@
+import { popupAreYouSure } from "../index";
+
 export class Card {
-    constructor({text, image, likes, owner, id, templateSelector, handleCardClick, handlePopupRemove, handleLike, handleDelete}) {
+    constructor({text, image, likes, ownerId, id, templateSelector, handleCardClick, handlePopupRemove, handleLike, handleDeleteLike, userId}) {
         this._text = text;
         this._image = image;
         this._templateSelector = templateSelector;
@@ -7,22 +9,24 @@ export class Card {
         this.likeButton = '.showplace__like';
         this._likes = likes;
         this._likesSelector = '.showplace__people-likes';
-        this.owner = owner;
+        this._likeElement = document.querySelector(this._likesSelector);
+        this.ownerId = ownerId;
+        this.userId = userId;
         this._removeSelector = '.showplace__remove';
         this.handlePopupRemove = handlePopupRemove;
-        this.handleDelete = handleDelete;
         this.handleLike = handleLike;
+        this.handleDeleteLike = handleDeleteLike;
         this.id = id;
     }
-    
+
     _getTemplate() {
         const cardElement = document
-        .querySelector(this._templateSelector)
-        .content
-        .querySelector('.showplace')
-        .cloneNode(true)
-    
-      return cardElement;
+            .querySelector(this._templateSelector)
+            .content
+            .querySelector('.showplace')
+            .cloneNode(true)
+
+        return cardElement;
     }
 
     generateCard() {
@@ -32,48 +36,71 @@ export class Card {
         imageShowplace.src = this._image;
         this._element.querySelector('.showplace__name').textContent = this._text;
         imageShowplace.alt = this._text;
-        this._element.querySelector(this._likesSelector).textContent = this._likes.length;
-        // this._element.querySelector(removeSelector) = ;
-
+        this.likeInf()
+        this._colorLikeIcon();
+        this._addTrashButton();
         return this._element;
     }
 
     _setEventListeners() {
         this._element.querySelector('.showplace__remove').addEventListener('click', () => {
-            // this._handlerDeleteCard();
             this._handleImageRemovePopup();
         });
 
         this._element.querySelector(this.likeButton).addEventListener('click', () => {
-            // this._handlerAddLike();
-            this.likeMethod(this.id)
+            this.likeMethod()
         });
 
         this._element.querySelector('.showplace__image').addEventListener('click', () => {
             this._handleImageClick();
         });
 
-        // document.querySelector('.popup-are-you-sure__close').addEventListener('submit', () => {
-        //     this.handleDelete1();
-        // });
-
     }
 
-    _handlerDeleteCard = (id) => {
+    likeInf() {
+        if(this._likes.length >= 1) {
+            this._element.querySelector(this._likesSelector).textContent = this._likes.length;
+        } else {
+            this._element.querySelector(this._likesSelector).textContent;
+        }
+    }
+
+    handlerDeleteCard() {
         this._element.remove();
         this._element = null;
     };
 
-    handleDeleteFunction = () => {
-        this.handleDelete();
+    _handlerAddLike() {
+        this._colorLike();
+        // this._likeElement.textContent = Number(this._likeElement.textContent) - 1;
     };
 
-    _handlerAddLike = () => {
+    _handlerDeleteLike() {
+        this._colorLike();
+        // this._likeElement.textContent = Number(this._likeElement.textContent) - 1;
+    };
+
+
+    _colorLike() {
         this._element.querySelector('.showplace__like').classList.toggle('showplace__like_active');
     };
 
+    _colorLikeIcon = () => {
+        if (this._likes.some(like => like._id === this.userId)) {
+            this._colorLike();
+        } else {
+            this._element.querySelector('.showplace__like');
+        }
+    };
+
     likeMethod() {
-        this.handleLike()
+        if (this._likes.some(like => like._id === this.userId)) {
+            this.handleDeleteLike(this.id);
+            this._handlerDeleteLike(this.id);
+        } else {
+            this.handleLike(this.id);
+            this._handlerAddLike(this.id);
+        }
     };
 
     _handleImageClick = () => {
@@ -84,9 +111,11 @@ export class Card {
         this.handlePopupRemove();
     };
 
-    cardOwner() {
-        const myId = '638dc3e1a5f91c26916a01fb';
-        if (this.owner === myId) {
+    //Добавляется после обновления странцы, потому что берет значение моего id с сервера при загрузке профиля,
+    //как и обновление количества лайков.
+    //Не уверена, что это правильная реализация, если подскажете, как правильно, то буду вам очень благодарна :)
+    _addTrashButton() {
+        if (this.ownerId === this.userId) {
             this._element.querySelector(this._removeSelector).style.visibility = "visible";
         }
     }

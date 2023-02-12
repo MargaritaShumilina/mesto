@@ -12,6 +12,11 @@ export const popupShowplace = document.querySelector('.popup-showplace');
 export const formProfile = document.forms.formProfile;
 export const formAddPhoto = document.forms.formPhoto;
 export const openBtnAdd = document.querySelector('.profile__add-photo');
+export const avatarElement = document.querySelector('.profile__avatar-edit');
+export const popupSaveAvatarElement = document.querySelector('.popup-avatar');
+export const popupRemove = document.querySelector('.popup-are-you-sure');
+export const profileAvatarSelector = '.profile__avatar';
+export const profileAvatarImage = document.querySelector('.profile__avatar');
 export const formConfig = {
     popupElement: '.popup__form',
     popupInput: '.popup__input',

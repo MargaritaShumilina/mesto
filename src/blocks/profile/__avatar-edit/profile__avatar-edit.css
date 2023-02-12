@@ -12,7 +12,7 @@
     left: 0;
     right: 30px;
     bottom: 0;
-    opacity: .2;
+    opacity: 0;
     z-index: 1;
     transition: opacity 0.4s ease;
 }
@@ -32,4 +32,10 @@
 .profile__avatar-edit:hover:before,
 .profile__avatar-edit:hover:after {
     opacity: 1;
+}
+
+@media screen and (max-width: 1024px) {
+    .profile__avatar-edit:before  {
+        right: 0;
+    }
 }
