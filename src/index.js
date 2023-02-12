@@ -90,7 +90,7 @@ function addNewCard(text, image, likes, ownerId, id, templateSelector) {
         handleLike: (id) => {
             api.putLike(id)
             .then((data) => {
-                card.setLikesCount(data.likes.length)
+                card.setLikesCount(data.likes)
             })
             .then(() => {
                 card.colorLike();
@@ -100,7 +100,7 @@ function addNewCard(text, image, likes, ownerId, id, templateSelector) {
         handleDeleteLike: (id) => {
             api.deleteLike(id)
             .then((data) => {
-                card.setLikesCount(data.likes.length)
+                card.setLikesCount(data.likes)
             })
             .then(() => {
                 card.colorLike();
